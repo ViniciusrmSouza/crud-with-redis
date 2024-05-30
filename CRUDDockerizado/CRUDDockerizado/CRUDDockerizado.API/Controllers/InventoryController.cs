@@ -19,13 +19,13 @@ public class InventoryController : ControllerBase
         _cache = cache;
     }
 
-    [HttpGet("api/v1/Inventory/GetAll")]
+    [HttpGet("GetAll")]
     public async Task<List<Inventory>> GetAll()
     {
        return await _inventoryRepository.GetAllItem();
     }
     
-    [HttpGet("api/v1/Inventory/Redis")]
+    [HttpGet("Redis")]
     public async Task<IActionResult> Redis(Guid id)
     {
         var itemCache = await _cache.GetAsync(id.ToString());
@@ -45,15 +45,9 @@ public class InventoryController : ControllerBase
         return Ok(inventoryItem);
     }
     
-    [HttpPost("api/v1/Inventory/PostItem")]
+    [HttpPost("PostItem")]
     public async Task<Inventory> PostItem(Inventory item)
     {
         return await _inventoryRepository.PostItem(item);
-    }
-    
-    [HttpGet("api/v1/Inventory/Teste")]
-    public string Teste()
-    {
-        return "Teste";
     }
 }
