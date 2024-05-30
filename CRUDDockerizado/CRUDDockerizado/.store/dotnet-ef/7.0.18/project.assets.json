@@ -1,0 +1,129 @@
+{
+  "version": 3,
+  "targets": {
+    "net7.0": {
+      "dotnet-ef/7.0.18": {
+        "type": "package"
+      }
+    },
+    "net7.0/any": {
+      "dotnet-ef/7.0.18": {
+        "type": "package",
+        "tools": {
+          "tools/net6.0/any/DotnetToolSettings.xml": {},
+          "tools/net6.0/any/dotnet-ef.deps.json": {},
+          "tools/net6.0/any/dotnet-ef.dll": {},
+          "tools/net6.0/any/dotnet-ef.exe": {},
+          "tools/net6.0/any/dotnet-ef.runtimeconfig.json": {},
+          "tools/net6.0/any/ef.runtimeconfig.json": {},
+          "tools/net6.0/any/shims/win-arm64/dotnet-ef.exe": {},
+          "tools/net6.0/any/shims/win-x64/dotnet-ef.exe": {},
+          "tools/net6.0/any/shims/win-x86/dotnet-ef.exe": {},
+          "tools/net6.0/any/tools/net461/any/ef.exe": {},
+          "tools/net6.0/any/tools/net461/win-arm64/ef.exe": {},
+          "tools/net6.0/any/tools/net461/win-x86/ef.exe": {},
+          "tools/net6.0/any/tools/netcoreapp2.0/any/ef.dll": {},
+          "tools/net6.0/any/tools/netcoreapp2.0/any/ef.runtimeconfig.json": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "dotnet-ef/7.0.18": {
+      "sha512": "E+wJm6GU/xakDP2/tY5FIWZUzzOINOezyIpZ07DHzIqQJd9LhPP2ahksqGvyP5N3sYqmPgx5gBWJIoRccFEy5w==",
+      "type": "package",
+      "path": "dotnet-ef/7.0.18",
+      "hasTools": true,
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "dotnet-ef.7.0.18.nupkg.sha512",
+        "dotnet-ef.nuspec",
+        "tools/net6.0/any/DotnetToolSettings.xml",
+        "tools/net6.0/any/dotnet-ef.deps.json",
+        "tools/net6.0/any/dotnet-ef.dll",
+        "tools/net6.0/any/dotnet-ef.exe",
+        "tools/net6.0/any/dotnet-ef.runtimeconfig.json",
+        "tools/net6.0/any/ef.runtimeconfig.json",
+        "tools/net6.0/any/shims/win-arm64/dotnet-ef.exe",
+        "tools/net6.0/any/shims/win-x64/dotnet-ef.exe",
+        "tools/net6.0/any/shims/win-x86/dotnet-ef.exe",
+        "tools/net6.0/any/tools/net461/any/ef.exe",
+        "tools/net6.0/any/tools/net461/win-arm64/ef.exe",
+        "tools/net6.0/any/tools/net461/win-x86/ef.exe",
+        "tools/net6.0/any/tools/netcoreapp2.0/any/ef.dll",
+        "tools/net6.0/any/tools/netcoreapp2.0/any/ef.runtimeconfig.json"
+      ]
+    }
+  },
+  "projectFileDependencyGroups": {
+    "net7.0": [
+      "dotnet-ef >= 7.0.18"
+    ]
+  },
+  "packageFolders": {
+    "C:\\Users\\Vinicius Souza\\RiderProjects\\CRUDDockerizado\\CRUDDockerizado\\.store\\.stage\\udw2c5gu.uic": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "C:\\Users\\Vinicius Souza\\AppData\\Local\\Temp\\1b588336-bc1c-4d89-8a01-aa7458af2027\\restore.csproj",
+      "projectName": "restore",
+      "projectPath": "C:\\Users\\Vinicius Souza\\AppData\\Local\\Temp\\1b588336-bc1c-4d89-8a01-aa7458af2027\\restore.csproj",
+      "packagesPath": "C:\\Users\\Vinicius Souza\\RiderProjects\\CRUDDockerizado\\CRUDDockerizado\\.store\\.stage\\udw2c5gu.uic",
+      "outputPath": "C:\\Users\\Vinicius Souza\\RiderProjects\\CRUDDockerizado\\CRUDDockerizado\\.store\\.stage\\udw2c5gu.uic\\",
+      "projectStyle": "DotnetToolReference",
+      "configFilePaths": [
+        "C:\\Users\\Vinicius Souza\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+      ],
+      "originalTargetFrameworks": [
+        "net7.0"
+      ],
+      "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "projectReferences": {}
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      }
+    },
+    "frameworks": {
+      "net7.0": {
+        "targetAlias": "net7.0",
+        "dependencies": {
+          "dotnet-ef": {
+            "target": "Package",
+            "version": "[7.0.18, )"
+          }
+        },
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48",
+          "net481"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.201\\RuntimeIdentifierGraph.json"
+      }
+    },
+    "runtimes": {
+      "any": {
+        "#import": []
+      }
+    }
+  }
+}
