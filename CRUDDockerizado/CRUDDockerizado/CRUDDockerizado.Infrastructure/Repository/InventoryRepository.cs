@@ -18,9 +18,9 @@ public class InventoryRepository : IInventoryRepository
        return items;
     }
 
-    public async Task<Inventory> GetItem(Guid id)
+    public async Task<Inventory?> GetItem(Guid id)
     {
-        return await _crudContext.Inventories.AsNoTracking().Where(x => x.Id == id).FirstOrDefaultAsync();
+        return await _crudContext.Inventories.AsNoTracking().FirstOrDefaultAsync(x => x.Id == id);
     }
 
     public async Task<Inventory> PostItem(Inventory item)
@@ -28,5 +28,12 @@ public class InventoryRepository : IInventoryRepository
         var a = await _crudContext.Inventories.AddAsync(item);
         await _crudContext.SaveChangesAsync();
         return a.Entity;
+    }
+
+    public async Task<Inventory> UpdateItem(Inventory item)
+    {
+        var itemUpdated = _crudContext.Inventories.Update(item);
+        await _crudContext.SaveChangesAsync();
+        return itemUpdated.Entity;
     }
 }

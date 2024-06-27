@@ -1,4 +1,5 @@
 using System.Text.Json;
+using CRUDDockerizado.CRUDDockerizado.Application.Services.Interfaces;
 using CRUDDockerizado.CRUDDockerizado.Domain.Caching;
 using CRUDDockerizado.CRUDDockerizado.Domain.Entities;
 using CRUDDockerizado.CRUDDockerizado.Domain.Repository;
@@ -7,47 +8,51 @@ using Microsoft.AspNetCore.Mvc;
 namespace CRUDDockerizado.CRUDDockerizado.API.Controllers;
 
 [ApiController]
-[Route("api/v1/[controller]")]
+[Route("api/[controller]")]
 public class InventoryController : ControllerBase
 {
-    private IInventoryRepository _inventoryRepository;
-    private readonly ICachingService _cache;
+    private IInventoryService _inventoryService;
 
-    public InventoryController(IInventoryRepository inventoryRepository, ICachingService cache)
+    public InventoryController(IInventoryService inventoryService)
     {
-        _inventoryRepository = inventoryRepository;
-        _cache = cache;
+        _inventoryService = inventoryService;
     }
 
     [HttpGet("GetAll")]
-    public async Task<List<Inventory>> GetAll()
+    public async Task<IActionResult> GetAll()
     {
-       return await _inventoryRepository.GetAllItem();
+         var items = await _inventoryService.GetAll();
+         if (items == null) return BadRequest("Não existe nenhum item cadastrado");
+
+         return Ok(items);
     }
     
     [HttpGet("Redis")]
     public async Task<IActionResult> Redis(Guid id)
     {
-        var itemCache = await _cache.GetAsync(id.ToString());
+      var result = await _inventoryService.GetById(id.ToString());
 
-        Inventory inventoryItem;
-        if (itemCache != "Nenhum valor encontrado")
-        {
-            inventoryItem = JsonSerializer.Deserialize<Inventory>(itemCache)!;
-            return Ok(inventoryItem);
-        }
+      if (result != null) return Ok(result);
 
-        inventoryItem = await _inventoryRepository.GetItem(id);
-        if (inventoryItem == null) NotFound("Item not found");
-
-        await _cache.SetAsync(id.ToString(), JsonSerializer.Serialize(inventoryItem));
-
-        return Ok(inventoryItem);
+      return BadRequest("Esse item não existe!");
     }
     
     [HttpPost("PostItem")]
-    public async Task<Inventory> PostItem(Inventory item)
+    public async Task<IActionResult> PostItem(Inventory item)
     {
-        return await _inventoryRepository.PostItem(item);
+        var result = await _inventoryService.IncludeItem(item);
+        if (result != null) return Ok(result);
+
+        return BadRequest("Item já cadastrado!");
+    }
+
+    [HttpPut("PutItem")]
+    public async Task<IActionResult> PutItem(Inventory item)
+    {
+        var result = await _inventoryService.UpdateItem(item);
+
+        if (result != null) return Ok(result);
+
+        return BadRequest("Esse item não existe");
     }
 }

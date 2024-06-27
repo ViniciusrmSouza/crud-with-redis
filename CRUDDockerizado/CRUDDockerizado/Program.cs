@@ -1,3 +1,5 @@
+using CRUDDockerizado.CRUDDockerizado.Application.Services.Implementations;
+using CRUDDockerizado.CRUDDockerizado.Application.Services.Interfaces;
 using CRUDDockerizado.CRUDDockerizado.Domain.Caching;
 using CRUDDockerizado.CRUDDockerizado.Domain.Repository;
 using CRUDDockerizado.CRUDDockerizado.Infrastructure.Caching;
@@ -5,7 +7,6 @@ using CRUDDockerizado.CRUDDockerizado.Infrastructure.Data;
 using CRUDDockerizado.CRUDDockerizado.Infrastructure.Repository;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
-using StackExchange.Redis;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,6 +19,7 @@ builder.Services.AddDbContext<CrudContext>(opt =>
 
 builder.Services.AddScoped<ICachingService, CachingService>();
 builder.Services.AddScoped<IInventoryRepository, InventoryRepository>();
+builder.Services.AddScoped<IInventoryService, IventoryService>();
 
 builder.Services.AddStackExchangeRedisCache(x =>
 {
